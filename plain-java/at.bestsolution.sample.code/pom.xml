@@ -4,18 +4,23 @@
 	<groupId>at.bestsolution.sample</groupId>
 	<artifactId>at.bestsolution.sample.code</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<repositories>
-		<repository>
-			<id>sonatype-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</repository>
-	</repositories>
+
 
 	<dependencies>
 		<dependency>
 			<groupId>at.bestsolution.eclipse</groupId>
 			<artifactId>org.eclipse.fx.code.editor.fx</artifactId>
-			<version>2.1.0-SNAPSHOT</version>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>at.bestsolution</groupId>
+			<artifactId>at.bestsolution.dart.server.api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0-rc1</version>
 		</dependency>
 	</dependencies>
 

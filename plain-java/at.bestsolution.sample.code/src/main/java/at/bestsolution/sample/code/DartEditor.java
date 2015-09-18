@@ -1,11 +1,17 @@
 package at.bestsolution.sample.code;
 
-import org.eclipse.fx.code.editor.SourceChange;
+import org.eclipse.fx.code.editor.Constants;
+import org.eclipse.fx.code.editor.Input;
+import org.eclipse.fx.code.editor.SourceFileChange;
 import org.eclipse.fx.code.editor.StringInput;
 import org.eclipse.fx.code.editor.fx.TextEditor;
 import org.eclipse.fx.code.editor.fx.services.internal.DefaultSourceViewerConfiguration;
 import org.eclipse.fx.code.editor.services.InputDocument;
+import org.eclipse.fx.core.event.Event;
+import org.eclipse.fx.core.event.EventBus;
 
+import at.bestsolution.dart.server.api.DartServer;
+import at.bestsolution.sample.code.complete.DartProposalComputer;
 import at.bestsolution.sample.code.generated.DartPartitioner;
 import at.bestsolution.sample.code.generated.DartPresentationReconciler;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
@@ -13,23 +19,31 @@ import javafx.beans.property.ReadOnlyBooleanWrapper;
 public class DartEditor extends TextEditor {
 	private ReadOnlyBooleanWrapper modified = new ReadOnlyBooleanWrapper(this, "modified",false);
 
-	public DartEditor(StringInput input) {
+	private final StringInput input;
+
+	private DartProposalComputer dartProposalComputer;
+
+	public DartEditor(StringInput input, EventBus eventBus, DartServer server) {
+		this.input = input;
 		setInput(input);
 		setDocument(new InputDocument(input));
 		setPartitioner(new DartPartitioner());
-		setSourceViewerConfiguration(new DefaultSourceViewerConfiguration(input, new DartPresentationReconciler(), null, null, null));
+		dartProposalComputer = new DartProposalComputer(server);
+		setSourceViewerConfiguration(new DefaultSourceViewerConfiguration(input, new DartPresentationReconciler(), dartProposalComputer, null, null));
+		eventBus.subscribe(Constants.TOPIC_SOURCE_FILE_INPUT_MODIFIED, this::handleModified);
+		eventBus.subscribe(Constants.TOPIC_SOURCE_FILE_INPUT_SAVED, this::handleSaved);
 	}
 
-	@Override
-	protected void documentModified(SourceChange event) {
-		super.documentModified(event);
-		this.modified.set(true);
+	private void handleModified(Event<SourceFileChange> e) {
+		if( e.getData().input == this.input ) {
+			modified.set(true);
+		}
 	}
 
-	@Override
-	protected void documentSaved() {
-		super.documentSaved();
-		this.modified.set(false);
+	private void handleSaved(Event<Input<?>> e) {
+		if( e.getData() == this.input ) {
+			modified.set(false);
+		}
 	}
 
 	public final javafx.beans.property.ReadOnlyBooleanProperty modifiedProperty() {
@@ -39,5 +53,9 @@ public class DartEditor extends TextEditor {
 
 	public final boolean isModified() {
 		return this.modifiedProperty().get();
+	}
+
+	public void dispose() {
+		dartProposalComputer.dispose();
 	}
 }
