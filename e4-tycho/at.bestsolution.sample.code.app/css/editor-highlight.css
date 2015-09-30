@@ -1,9 +1,27 @@
+
 .root {
 	-type-info-color: lightgray;
 }
 
+.styled-text-area .source-segment {
+	-fx-font-family: 'Hack';
+	-fx-font-size: 12px;
+}
+
+.styled-text-area .plain-source-segment {
+	-fx-font-family: 'Hack';
+	-fx-font-size: 12px;
+}
+
+.styled-text-area .line-ruler-text {
+	-fx-font-family: 'Hack';
+	-fx-font-size: 12px;
+}
+
+
 .styled-text-area .list-view {
 	-fx-background-color: white;
+
 
 	-source-editor-code: rgb(0, 0, 0);
 	-source-editor-operator: rgb(0, 0, 0);

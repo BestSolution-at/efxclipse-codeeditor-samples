@@ -21,6 +21,7 @@ import at.bestsolution.dart.server.api.model.ChangeContentOverlay;
 import at.bestsolution.dart.server.api.model.RemoveContentOverlay;
 import at.bestsolution.dart.server.api.model.SourceEdit;
 import at.bestsolution.dart.server.api.services.ServiceAnalysis;
+import javafx.scene.text.Font;
 
 @SuppressWarnings("restriction")
 public class DartFileManager {
@@ -31,6 +32,11 @@ public class DartFileManager {
 	@Inject
 	public DartFileManager(EventBus eventBroker, DartServer server) {
 		this.server = server;
+		Font.loadFont(DartFileManager.class.getClassLoader().getResource("css/Hack-Regular.ttf").toExternalForm(), 10);
+		Font.loadFont(DartFileManager.class.getClassLoader().getResource("css/Hack-Italic.ttf").toExternalForm(), 10);
+		Font.loadFont(DartFileManager.class.getClassLoader().getResource("css/Hack-BoldItalic.ttf").toExternalForm(), 10);
+		Font.loadFont(DartFileManager.class.getClassLoader().getResource("css/Hack-Bold.ttf").toExternalForm(), 10);
+
 		eventBroker.subscribe(Constants.TOPIC_SOURCE_FILE_INPUT_CREATED, this::handleInputOpened);
 		eventBroker.subscribe(Constants.TOPIC_SOURCE_FILE_INPUT_MODIFIED, this::handleInputModified);
 		eventBroker.subscribe(Constants.TOPIC_SOURCE_FILE_INPUT_SAVED, this::handleInputSaved);
