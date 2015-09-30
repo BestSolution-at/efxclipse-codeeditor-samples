@@ -5,17 +5,17 @@
 
 .styled-text-area .source-segment {
 	-fx-font-family: 'Hack';
-	-fx-font-size: 12px;
+	-fx-font-size: 13px;
 }
 
 .styled-text-area .plain-source-segment {
 	-fx-font-family: 'Hack';
-	-fx-font-size: 12px;
+	-fx-font-size: 13px;
 }
 
 .styled-text-area .line-ruler-text {
 	-fx-font-family: 'Hack';
-	-fx-font-size: 12px;
+	-fx-font-size: 13px;
 }
 
 
