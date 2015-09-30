@@ -10,23 +10,33 @@ import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.PersistState;
-import org.eclipse.fx.code.editor.services.TextEditorOpener;
+import org.eclipse.fx.code.editor.services.EditorOpener;
 import org.eclipse.fx.core.Memento;
 import org.eclipse.fx.ui.controls.filesystem.FileItem;
 import org.eclipse.fx.ui.controls.filesystem.ResourceEvent;
 import org.eclipse.fx.ui.controls.filesystem.ResourceItem;
 import org.eclipse.fx.ui.controls.filesystem.ResourceTreeView;
 
+import at.bestsolution.dart.server.api.DartServer;
+import at.bestsolution.dart.server.api.services.ServiceAnalysis;
 import javafx.collections.FXCollections;
 import javafx.scene.layout.BorderPane;
 
+@SuppressWarnings("restriction")
 public class ResourceViewerPart {
 	@Inject
-	TextEditorOpener opener;
+	EditorOpener opener;
 
 	private Path rootDirectory;
 
 	private ResourceTreeView viewer;
+
+	private DartServer server;
+
+	@Inject
+	public ResourceViewerPart(DartServer server) {
+		this.server = server;
+	}
 
 	@PostConstruct
 	void init(BorderPane parent, Memento memento) {
@@ -41,6 +51,7 @@ public class ResourceViewerPart {
 
 		if( rootDirectory != null ) {
 			viewer.setRootDirectories(FXCollections.observableArrayList(ResourceItem.createObservedPath(rootDirectory)));
+			server.getService(ServiceAnalysis.class).setAnalysisRoots(new String[] {rootDirectory.toFile().getAbsolutePath()}, new String[0], null);
 		}
 		viewer.addEventHandler(ResourceEvent.openResourceEvent(), this::handleOpenResource);
 		parent.setCenter(viewer);
@@ -52,6 +63,7 @@ public class ResourceViewerPart {
 		this.rootDirectory = rootDirectory;
 		if( viewer != null ) {
 			viewer.setRootDirectories(FXCollections.observableArrayList(ResourceItem.createObservedPath(rootDirectory)));
+			server.getService(ServiceAnalysis.class).setAnalysisRoots(new String[] {rootDirectory.toFile().getAbsolutePath()}, new String[0], null);
 		}
 	}
 

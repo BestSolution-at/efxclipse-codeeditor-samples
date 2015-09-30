@@ -10,9 +10,9 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 @Component(service=Theme.class)
-public class DefaultTheme extends AbstractTheme {
-	public DefaultTheme() {
-		super("theme.default", "Default theme", DefaultTheme.class.getClassLoader().getResource("css/default.css"));
+public class DarkTheme extends AbstractTheme {
+	public DarkTheme() {
+		super("dark", "Dark theme", DefaultTheme.class.getClassLoader().getResource("css/dark.css"));
 	}
 
 	@Reference(cardinality=ReferenceCardinality.MULTIPLE,policy=ReferencePolicy.DYNAMIC)

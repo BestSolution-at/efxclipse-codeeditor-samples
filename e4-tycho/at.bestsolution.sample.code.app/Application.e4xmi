@@ -14,10 +14,19 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_tkZRMDQ5EeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.handledmenuitem.selectrootfolder" label="Select root folder ..." command="_vOBhcDQ5EeWceqcGK14chA"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Ep0QcDRBEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.handledmenuitem.save" label="Save" command="_LFeFQDRBEeWceqcGK14chA"/>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_hPs1IGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.menu.theme" label="Theme">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_uQaSYGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.handledmenuitem.bright" label="Bright" selected="true" type="Radio" command="_jedywGdtEeWj7LP37eqHXw">
+          <parameters xmi:id="_u9FyMGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.parameter.0" name="theme.id" value="theme.default"/>
+        </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_3RsssGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.handledmenuitem.dark" label="Dark" type="Radio" command="_jedywGdtEeWj7LP37eqHXw">
+          <parameters xmi:id="_6AspkGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.parameter.1" name="theme.id" value="dark"/>
+        </children>
+      </children>
     </mainMenu>
   </children>
   <handlers xmi:id="_uJcfADQ5EeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.handler.0" contributionURI="bundleclass://at.bestsolution.sample.code.app/at.bestsolution.sample.code.app.handler.SetRootDirectory" command="_vOBhcDQ5EeWceqcGK14chA"/>
   <handlers xmi:id="_1vZDEDRBEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.handler.1" contributionURI="bundleclass://org.eclipse.fx.code.editor.e4/org.eclipse.fx.code.editor.e4.handlers.SaveFile" command="_LFeFQDRBEeWceqcGK14chA"/>
+  <handlers xmi:id="_sLGywGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.handler.2" contributionURI="bundleclass://at.bestsolution.sample.code.app/at.bestsolution.sample.code.app.handler.SwitchTheme" command="_jedywGdtEeWj7LP37eqHXw"/>
   <bindingTables xmi:id="_HhMGMDRBEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.bindingtable.0" bindingContext="_LyBbsDHwEeWIOJPYl305QQ">
     <bindings xmi:id="_JW2AQDRBEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.keybinding.0" keySequence="M1+S" command="_LFeFQDRBEeWceqcGK14chA"/>
   </bindingTables>
@@ -27,6 +36,9 @@
   </rootContext>
   <commands xmi:id="_vOBhcDQ5EeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.command.rootdir" commandName="Set the root directory"/>
   <commands xmi:id="_LFeFQDRBEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.command.save" commandName="Save"/>
+  <commands xmi:id="_jedywGdtEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.command.switchtheme" commandName="Switch Theme">
+    <parameters xmi:id="_k3-jYGdtEeWj7LP37eqHXw" elementId="theme.id" name="Theme Id"/>
+  </commands>
   <addons xmi:id="_LyCCwzHwEeWIOJPYl305QQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_LyCCxDHwEeWIOJPYl305QQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_LyCCxTHwEeWIOJPYl305QQ" elementId="org.eclipse.fx.ui.keybindings.e4.service" contributionURI="bundleclass://org.eclipse.fx.ui.keybindings.e4/org.eclipse.fx.ui.keybindings.e4.BindingServiceAddon"/>
@@ -35,4 +47,5 @@
   <addons xmi:id="_LyCCyDHwEeWIOJPYl305QQ" elementId="org.eclipse.fx.ui.keybindings.e4.model" contributionURI="bundleclass://org.eclipse.fx.ui.keybindings.e4/org.eclipse.fx.ui.keybindings.e4.BindingProcessingAddon"/>
   <addons xmi:id="_LyCCyTHwEeWIOJPYl305QQ" elementId="org.eclipse.e4.ui.workbench.addons.HandlerProcessingAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_85NWsDRHEeWceqcGK14chA" elementId="at.bestsolution.sample.code.app.addon.0" contributionURI="bundleclass://org.eclipse.fx.code.editor.e4/org.eclipse.fx.code.editor.e4.addons.DirtyStateTrackingAddon"/>
+  <addons xmi:id="_fJzccGdpEeWj7LP37eqHXw" elementId="at.bestsolution.sample.code.app.addon.1" contributionURI="bundleclass://at.bestsolution.sample.code.app/at.bestsolution.sample.code.app.DartFileManager"/>
 </application:Application>

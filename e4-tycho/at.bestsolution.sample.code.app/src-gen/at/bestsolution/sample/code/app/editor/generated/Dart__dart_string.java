@@ -10,7 +10,8 @@ public class Dart__dart_string extends org.eclipse.jface.text.rules.RuleBasedSca
 			  "${"
 			, "}"
 			, dart_string_interToken
-			);
+			, (char)0
+			, false);
 
 		setRules(rules);
 	}

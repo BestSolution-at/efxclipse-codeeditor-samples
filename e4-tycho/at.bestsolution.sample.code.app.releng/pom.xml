@@ -26,7 +26,6 @@
 		<module>../at.bestsolution.sample.code.app</module>
 		<module>../at.bestsolution.sample.code.app.feature</module>
 		<module>../at.bestsolution.sample.code.app.product</module>
-		<module>../at.bestsolution.sample.code.app.jemmy</module>
 	</modules>
 
 	<repositories>
@@ -91,8 +90,8 @@
 					<version>${tycho-version}</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 						<extraClasspathElements>
 							<extraClasspathElement>
 								<groupId>javafx</groupId>
